@@ -21,7 +21,8 @@ export default function Subjects() {
           <div className="fd" style={{ fontWeight: 700, color: 'var(--gd)', fontSize: 14 }}>Milliy Prep</div>
         </div>
         <a href="/dashboard" style={{ display: 'block', padding: '8px 9px', borderRadius: 8, color: 'var(--muted)', fontWeight: 500, fontSize: 13, marginBottom: 2 }}>⊞ Dashboard</a>
-        <a href="/subjects" style={{ display: 'block', padding: '8px 9px', borderRadius: 8, background: 'var(--gl)', color: 'var(--gd)', fontWeight: 600, fontSize: 13 }}>📚 Fanlar</a>
+        <a href="/subjects" style={{ display: 'block', padding: '8px 9px', borderRadius: 8, background: 'var(--gl)', color: 'var(--gd)', fontWeight: 600, fontSize: 13, textDecoration: 'none', marginBottom: 2 }}>📚 Fanlar</a>
+        <a href="/pricing" style={{ display: 'block', padding: '8px 9px', borderRadius: 8, color: 'var(--muted)', fontWeight: 500, fontSize: 13, textDecoration: 'none' }}>💳 Obuna rejalari</a>
       </aside>
 
       <div style={{ flex: 1, padding: 24 }}>
