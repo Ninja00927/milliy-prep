@@ -51,6 +51,8 @@ export default function LoginPage() {
     if (error || !data) {
       setMessage('Email yoki parol noto\'g\'ri');
     } else {
+      localStorage.setItem('userEmail', data.email);
+      localStorage.setItem('userName', data.full_name);
       router.push('/dashboard');
     }
   }
@@ -86,7 +88,7 @@ export default function LoginPage() {
             <div className="fd" style={{ fontSize: 20, fontWeight: 800, color: 'var(--gd)' }}>
               Milliy Prep
             </div>
-            <div style={{ fontSize: 11, color: 'var(--muted)' }}>Milliy Sertifikat Platformasi</div>
+            <div style={{fontSize: 11, color: 'var(--muted)' }}>Milliy Sertifikat Platformasi</div>
           </div>
         </div>
 
@@ -98,13 +100,11 @@ export default function LoginPage() {
             Ro&apos;yxatdan o&apos;tish
           </div>
         </div>
-
         {message && (
           <div style={{ padding: '10px 14px', borderRadius: 8, background: 'var(--al)', color: 'var(--ad)', fontSize: 13, marginBottom: 14 }}>
             {message}
           </div>
         )}
-
         {tab === 'login' && (
           <form onSubmit={handleLogin}>
             <div className="fg">
@@ -118,7 +118,6 @@ export default function LoginPage() {
             <button type="submit" className="btn btn-p btn-full btn-lg">Kirish →</button>
           </form>
         )}
-
         {tab === 'register' && (
           <form onSubmit={handleRegister}>
             <div className="fg">
