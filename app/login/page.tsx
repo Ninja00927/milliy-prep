@@ -21,14 +21,15 @@ export default function LoginPage() {
     e.preventDefault();
     setMessage('');
 
-    const { error } = await supabase.from('users').insert({
-      full_name: regName,
-      email: regEmail,
-      password: regPassword,
+    const res = await fetch('/api/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fullName: regName, email: regEmail, password: regPassword }),
     });
+    const result = await res.json();
 
-    if (error) {
-      setMessage('Xatolik: ' + error.message);
+    if (result.error) {
+      setMessage('Xatolik: ' + result.error);
     } else {
       setMessage('Muvaffaqiyatli ro\'yxatdan o\'tdingiz! Endi kirish tabiga o\'ting.');
       setRegName('');
@@ -41,21 +42,21 @@ export default function LoginPage() {
     e.preventDefault();
     setMessage('');
 
-    const { data, error } = await supabase
-      .from('users')
-      .select('*')
-      .eq('email', loginEmail)
-      .eq('password', loginPassword)
-      .single();
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: loginEmail, password: loginPassword }),
+    });
+    const result = await res.json();
 
-    if (error || !data) {
-      setMessage('Email yoki parol noto\'g\'ri');
+    if (result.error) {
+      setMessage(result.error);
     } else {
-      localStorage.setItem('userEmail', data.email);
-      localStorage.setItem('userName', data.full_name);
-            if (data.role === 'centre_admin') {
+      localStorage.setItem('userEmail', result.email);
+      localStorage.setItem('userName', result.fullName);
+      if (result.role === 'centre_admin') {
         router.push('/centre');
-      } else if (data.role === 'superadmin') {
+      } else if (result.role === 'superadmin') {
         router.push('/admin');
       } else {
         router.push('/dashboard');
