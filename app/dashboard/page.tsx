@@ -20,9 +20,12 @@ export default function Dashboard() {
           <div style={{ width: 32, height: 32, borderRadius: 8, background: 'linear-gradient(135deg,var(--g),var(--gd))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16 }}>🎓</div>
           <div className="fd" style={{ fontWeight: 700, color: 'var(--gd)', fontSize: 14 }}>Milliy Prep</div>
         </div>
-        <div style={{ padding: '8px 9px', borderRadius: 8, background: 'var(--gl)', color: 'var(--gd)', fontWeight: 600, fontSize: 13 }}>
+        <a href="/dashboard" style={{ display: 'block', padding: '8px 9px', borderRadius: 8, background: 'var(--gl)', color: 'var(--gd)', fontWeight: 600, fontSize: 13, textDecoration: 'none', marginBottom: 2 }}>
           ⊞ Dashboard
-        </div>
+        </a>
+        <a href="/subjects" style={{ display: 'block', padding: '8px 9px', borderRadius: 8, color: 'var(--muted)', fontWeight: 500, fontSize: 13, textDecoration: 'none' }}>
+          📚 Fanlar
+        </a>
       </aside>
 
       <div style={{ flex: 1, padding: 24 }}>
