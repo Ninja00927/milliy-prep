@@ -53,7 +53,11 @@ export default function LoginPage() {
     } else {
       localStorage.setItem('userEmail', data.email);
       localStorage.setItem('userName', data.full_name);
-      router.push('/dashboard');
+      if (data.role === 'centre_admin') {
+        router.push('/centre');
+      } else {
+        router.push('/dashboard');
+      }
     }
   }
 
